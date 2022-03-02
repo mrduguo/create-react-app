@@ -582,6 +582,13 @@ module.exports = function (webpackEnv) {
                 'sass-loader'
               ),
             },
+            // Process GraphQL files with graphql-tag/loader.
+            // e.g. import currentUserQuery from './currentUser.gql';
+            {
+              test: /\.(gql|graphql)$/,
+              exclude: /node_modules/,
+              loader: require.resolve('graphql-tag/loader'),
+            },
             // "file" loader makes sure those assets get served by WebpackDevServer.
             // When you `import` an asset, you get its (virtual) filename.
             // In production, they would get copied to the `build` folder.
